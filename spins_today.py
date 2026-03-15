@@ -6,7 +6,7 @@ from datetime import datetime, timedelta
 from bs4 import BeautifulSoup
 import re
 
-client = TavilyClient(api_key="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")
+client = TavilyClient(api_key=os.environ["TAVILY_API_KEY"])
 
 def scrape_reward_links(url):
     """Scrape link reward từ các website"""
@@ -85,21 +85,26 @@ def get_last_3_days_spins():
                     # 🔥 Scrape để lấy link reward từ trang này
                     reward_links = scrape_reward_links(url)
                     
-                    if reward_links:
-                        # Có link reward - lưu trực tiếp
-                        for reward_url in reward_links[:3]:  # Max 3 per source
-                            if reward_url not in seen_urls:
-                                seen_urls.add(reward_url)
-                                links.append({"reward": "Coin Master Free Spins", "url": reward_url})
-                                print(f"   ✅ Reward link: {reward_url}")
-                    else:
-                        # Không có link reward - lưu link blog
-                        reward = title.split("–")[-1].strip() if "–" in title else title[:50]
-                        links.append({"reward": reward, "url": url})
-                        print(f"   📄 Blog link: {url[:70]}...")
+                    # Chỉ lưu reward links, bỏ qua blog links
+                    for reward_url in reward_links[:3]:  # Max 3 per source
+                        if reward_url not in seen_urls:
+                            seen_urls.add(reward_url)
+                            links.append({"reward": "Coin Master Free Spins", "url": reward_url})
+                            print(f"   ✅ Reward link: {reward_url}")
+
+            # Scrape trực tiếp levvvel.com (nguồn nhiều link)
+            levvvel_url = "https://levvvel.com/coin-master-free-spins-coins/"
+            if levvvel_url not in seen_urls:
+                seen_urls.add(levvvel_url)
+                reward_links = scrape_reward_links(levvvel_url)
+                for reward_url in reward_links[:5]:
+                    if reward_url not in seen_urls:
+                        seen_urls.add(reward_url)
+                        links.append({"reward": "Coin Master Free Spins", "url": reward_url})
+                        print(f"   ✅ levvvel reward: {reward_url}")
 
             all_links[date_str] = links[:12]  # max 12 per dag
-            print(f"   ✅ Total: {len(links)} link!")
+            print(f"   ✅ Total: {len(links)} reward link!")
         except Exception as e:
             print(f"❌ Error: {e}")
             all_links[date_str] = []

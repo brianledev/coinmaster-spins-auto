@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Coin Master Free Spins – Daily Links</title>
+  <title>Coin Master Free Spins – Daily Links by Lê Bình An</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -188,10 +188,50 @@
 
     footer {
       text-align: center;
-      color: #555;
-      font-size: 0.75rem;
+      color: #777;
+      font-size: 0.8rem;
       margin-top: 40px;
-      padding-bottom: 20px;
+      padding-bottom: 30px;
+    }
+
+    .footer-author {
+      margin-bottom: 10px;
+      font-size: 0.9rem;
+      color: #aaa;
+    }
+
+    .footer-author strong {
+      color: #ffd700;
+    }
+
+    .btn-facebook {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #1877f2;
+      color: #fff;
+      border: none;
+      border-radius: 25px;
+      padding: 9px 22px;
+      font-size: 0.9rem;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.15s, box-shadow 0.2s;
+      margin-bottom: 12px;
+    }
+
+    .btn-facebook:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 16px rgba(24,119,242,0.4);
+    }
+
+    .btn-claim.claimed {
+      background: rgba(255,255,255,0.1);
+      color: #aaa;
+      border: 1px solid rgba(255,255,255,0.2);
+      cursor: default;
+      pointer-events: none;
     }
   </style>
 </head>
@@ -208,10 +248,35 @@
     <div id="loading"><span class="spinner"></span> Loading links...</div>
     <div id="content" style="display:none;"></div>
 
-    <footer>Auto updated daily via GitHub Actions</footer>
+    <footer>
+      <div class="footer-author">Made with ❤️ by <strong>Lê Bình An</strong></div>
+      <a class="btn-facebook" href="https://www.facebook.com/BrianLe.Scorp" target="_blank" rel="noopener">
+        <svg width="18" height="18" fill="white" viewBox="0 0 24 24"><path d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.236 2.686.236v2.97h-1.513c-1.491 0-1.956.93-1.956 1.874v2.25h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z"/></svg>
+        Facebook
+      </a>
+      <div>Auto updated daily via GitHub Actions</div>
+    </footer>
   </div>
 
   <script>
+    const CLAIMED_KEY = 'cm_claimed_urls';
+
+    function getClaimed() {
+      return JSON.parse(localStorage.getItem(CLAIMED_KEY) || '[]');
+    }
+
+    function markClaimed(url) {
+      const claimed = getClaimed();
+      if (!claimed.includes(url)) {
+        claimed.push(url);
+        localStorage.setItem(CLAIMED_KEY, JSON.stringify(claimed));
+      }
+    }
+
+    function isClaimed(url) {
+      return getClaimed().includes(url);
+    }
+
     async function loadLinks() {
       document.getElementById('loading').style.display = 'block';
       document.getElementById('content').style.display = 'none';
@@ -226,6 +291,14 @@
         content.innerHTML = '';
 
         for (const [day, links] of Object.entries(data.days)) {
+          // Chỉ lấy reward links
+          const rewardLinks = (links || []).filter(item =>
+            item.url.includes('rewards.coinmaster.com') ||
+            item.url.includes('coinmaster.onelink.me')
+          );
+
+          if (rewardLinks.length === 0) continue;
+
           const section = document.createElement('div');
           section.className = 'day-section';
 
@@ -237,29 +310,36 @@
           const grid = document.createElement('div');
           grid.className = 'links-grid';
 
-          if (!links || links.length === 0) {
-            grid.innerHTML = '<div class="empty">No links found for this day</div>';
-          } else {
-            links.forEach(item => {
-              const isReward = item.url.includes('rewards.coinmaster.com') || item.url.includes('coinmaster.onelink.me');
-              const card = document.createElement('div');
-              card.className = 'link-card' + (isReward ? ' reward' : '');
+          rewardLinks.forEach((item, idx) => {
+            const claimed = isClaimed(item.url);
+            const card = document.createElement('div');
+            card.className = 'link-card reward';
 
-              card.innerHTML = `
-                <div class="link-info">
-                  <div class="link-label">${isReward ? '⭐ Official Reward' : '📄 Source'}</div>
-                  <div class="link-url">${item.url}</div>
-                </div>
-                <a class="btn-claim ${isReward ? '' : 'secondary'}" href="${item.url}" target="_blank" rel="noopener">
-                  ${isReward ? 'Claim →' : 'Open →'}
-                </a>
-              `;
-              grid.appendChild(card);
-            });
-          }
+            card.innerHTML = `
+              <div class="link-info">
+                <div class="link-label">⭐ Free Spins #${idx + 1}</div>
+                <div class="link-url">${item.url}</div>
+              </div>
+              <a
+                class="btn-claim ${claimed ? 'claimed' : ''}"
+                href="${claimed ? '#' : item.url}"
+                target="${claimed ? '' : '_blank'}"
+                rel="noopener"
+                data-url="${item.url}"
+                onclick="handleClaim(event, this)"
+              >
+                ${claimed ? '✓ Claimed' : 'Claim →'}
+              </a>
+            `;
+            grid.appendChild(card);
+          });
 
           section.appendChild(grid);
           content.appendChild(section);
+        }
+
+        if (content.innerHTML === '') {
+          content.innerHTML = '<div class="empty" style="text-align:center;padding:40px;color:#888;">No reward links found today. Check back later!</div>';
         }
 
         document.getElementById('loading').style.display = 'none';
@@ -268,6 +348,19 @@
         document.getElementById('loading').innerHTML = '❌ Failed to load links. Please refresh.';
         console.error(e);
       }
+    }
+
+    function handleClaim(event, btn) {
+      const url = btn.getAttribute('data-url');
+      if (btn.classList.contains('claimed')) {
+        event.preventDefault();
+        return;
+      }
+      markClaimed(url);
+      btn.textContent = '✓ Claimed';
+      btn.classList.add('claimed');
+      btn.href = '#';
+      btn.removeAttribute('target');
     }
 
     loadLinks();

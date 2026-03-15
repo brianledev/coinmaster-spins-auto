@@ -356,11 +356,13 @@
         event.preventDefault();
         return;
       }
+      // Mở link trước, rồi mark claimed
+      window.open(url, '_blank', 'noopener');
+      event.preventDefault();
       markClaimed(url);
       btn.textContent = '✓ Claimed';
       btn.classList.add('claimed');
       btn.href = '#';
-      btn.removeAttribute('target');
     }
 
     loadLinks();

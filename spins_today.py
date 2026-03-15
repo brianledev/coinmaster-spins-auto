@@ -38,13 +38,12 @@ def scrape_reward_links(url):
 
 def get_last_3_days_spins():
     all_links = {}
-    seen_urls = set()
+    seen_reward_urls = set()  # Chỉ deduplicate reward links, không deduplicate source
 
     # Loop over vandaag, gisteren en eergisteren
     for i in range(3):
         date = datetime.now() - timedelta(days=i)
         date_str = date.strftime("%B %d, %Y")
-        # Quay lại tìm từ các blog uy tín (vì rewards.coinmaster.com không public được index)
         query = f"coin master free spins links {date_str}"
 
         try:
@@ -59,11 +58,12 @@ def get_last_3_days_spins():
             print(f"\n🔍 Searching for: {query}")
             print(f"📊 Found {len(response.get('results', []))} results")
             
+            scraped_sources = set()  # Reset mỗi ngày
+
             for item in response.get("results", []):
                 url = item.get("url", "")
                 title = item.get("title", "")
                 
-                # Lấy link từ các website uy tín
                 trusted_domains = [
                     "coinmaster-free-spins.net",
                     "lolvvv.com",
@@ -79,31 +79,25 @@ def get_last_3_days_spins():
                     "facebook.com"
                 ]
                 
-                if any(domain in url for domain in trusted_domains) and url not in seen_urls:
-                    seen_urls.add(url)
-                    
-                    # 🔥 Scrape để lấy link reward từ trang này
+                if any(domain in url for domain in trusted_domains) and url not in scraped_sources:
+                    scraped_sources.add(url)
                     reward_links = scrape_reward_links(url)
-                    
-                    # Chỉ lưu reward links, bỏ qua blog links
-                    for reward_url in reward_links[:3]:  # Max 3 per source
-                        if reward_url not in seen_urls:
-                            seen_urls.add(reward_url)
+                    for reward_url in reward_links[:3]:
+                        if reward_url not in seen_reward_urls:
+                            seen_reward_urls.add(reward_url)
                             links.append({"reward": "Coin Master Free Spins", "url": reward_url})
                             print(f"   ✅ Reward link: {reward_url}")
 
-            # Scrape trực tiếp levvvel.com (nguồn nhiều link)
+            # Scrape trực tiếp levvvel.com
             levvvel_url = "https://levvvel.com/coin-master-free-spins-coins/"
-            if levvvel_url not in seen_urls:
-                seen_urls.add(levvvel_url)
-                reward_links = scrape_reward_links(levvvel_url)
-                for reward_url in reward_links[:5]:
-                    if reward_url not in seen_urls:
-                        seen_urls.add(reward_url)
-                        links.append({"reward": "Coin Master Free Spins", "url": reward_url})
-                        print(f"   ✅ levvvel reward: {reward_url}")
+            reward_links = scrape_reward_links(levvvel_url)
+            for reward_url in reward_links[:5]:
+                if reward_url not in seen_reward_urls:
+                    seen_reward_urls.add(reward_url)
+                    links.append({"reward": "Coin Master Free Spins", "url": reward_url})
+                    print(f"   ✅ levvvel reward: {reward_url}")
 
-            all_links[date_str] = links[:12]  # max 12 per dag
+            all_links[date_str] = links[:12]
             print(f"   ✅ Total: {len(links)} reward link!")
         except Exception as e:
             print(f"❌ Error: {e}")

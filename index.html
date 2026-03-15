@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coin Master Free Spins – Daily Links</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      min-height: 100vh;
+      color: #fff;
+      padding: 20px;
+    }
+
+    header {
+      text-align: center;
+      padding: 30px 20px 10px;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      color: #ffd700;
+      text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+    }
+
+    header p {
+      color: #ccc;
+      margin-top: 8px;
+      font-size: 0.95rem;
+    }
+
+    #updated {
+      display: inline-block;
+      background: rgba(255,215,0,0.15);
+      border: 1px solid #ffd700;
+      color: #ffd700;
+      border-radius: 20px;
+      padding: 4px 14px;
+      font-size: 0.8rem;
+      margin-top: 10px;
+    }
+
+    #btn-refresh {
+      display: block;
+      margin: 20px auto;
+      background: #ffd700;
+      color: #1a1a2e;
+      border: none;
+      border-radius: 25px;
+      padding: 10px 28px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    #btn-refresh:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 20px rgba(255,215,0,0.4);
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .day-section {
+      margin-bottom: 30px;
+    }
+
+    .day-title {
+      font-size: 1.1rem;
+      font-weight: bold;
+      margin-bottom: 12px;
+      padding: 8px 16px;
+      background: rgba(255,215,0,0.1);
+      border-left: 4px solid #ffd700;
+      border-radius: 4px;
+      color: #ffd700;
+    }
+
+    .links-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .link-card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 14px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      transition: background 0.2s;
+    }
+
+    .link-card:hover {
+      background: rgba(255,255,255,0.12);
+    }
+
+    .link-card.reward {
+      border-color: rgba(255,215,0,0.4);
+      background: rgba(255,215,0,0.07);
+    }
+
+    .link-info {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .link-label {
+      font-size: 0.75rem;
+      color: #aaa;
+      margin-bottom: 2px;
+    }
+
+    .link-url {
+      font-size: 0.82rem;
+      color: #87ceeb;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .link-card.reward .link-url {
+      color: #ffd700;
+    }
+
+    .btn-claim {
+      flex-shrink: 0;
+      background: #ffd700;
+      color: #1a1a2e;
+      border: none;
+      border-radius: 20px;
+      padding: 7px 18px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.15s;
+    }
+
+    .btn-claim:hover {
+      transform: scale(1.07);
+    }
+
+    .btn-claim.secondary {
+      background: rgba(255,255,255,0.15);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.3);
+    }
+
+    .empty {
+      text-align: center;
+      color: #888;
+      padding: 20px;
+      font-style: italic;
+    }
+
+    #loading {
+      text-align: center;
+      padding: 60px;
+      font-size: 1.2rem;
+      color: #ffd700;
+    }
+
+    .spinner {
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      border: 3px solid rgba(255,215,0,0.3);
+      border-top-color: #ffd700;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin-right: 10px;
+      vertical-align: middle;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    footer {
+      text-align: center;
+      color: #555;
+      font-size: 0.75rem;
+      margin-top: 40px;
+      padding-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🎰 Coin Master Free Spins</h1>
+      <p>Daily reward links – auto updated every day</p>
+      <div id="updated"></div>
+    </header>
+
+    <button id="btn-refresh" onclick="loadLinks()">🔄 Refresh</button>
+
+    <div id="loading"><span class="spinner"></span> Loading links...</div>
+    <div id="content" style="display:none;"></div>
+
+    <footer>Auto updated daily via GitHub Actions</footer>
+  </div>
+
+  <script>
+    async function loadLinks() {
+      document.getElementById('loading').style.display = 'block';
+      document.getElementById('content').style.display = 'none';
+
+      try {
+        const res = await fetch('spins_today.json?t=' + Date.now());
+        const data = await res.json();
+
+        document.getElementById('updated').textContent = '🕐 Updated: ' + data.updated;
+
+        const content = document.getElementById('content');
+        content.innerHTML = '';
+
+        for (const [day, links] of Object.entries(data.days)) {
+          const section = document.createElement('div');
+          section.className = 'day-section';
+
+          const title = document.createElement('div');
+          title.className = 'day-title';
+          title.textContent = '📅 ' + day;
+          section.appendChild(title);
+
+          const grid = document.createElement('div');
+          grid.className = 'links-grid';
+
+          if (!links || links.length === 0) {
+            grid.innerHTML = '<div class="empty">No links found for this day</div>';
+          } else {
+            links.forEach(item => {
+              const isReward = item.url.includes('rewards.coinmaster.com') || item.url.includes('coinmaster.onelink.me');
+              const card = document.createElement('div');
+              card.className = 'link-card' + (isReward ? ' reward' : '');
+
+              card.innerHTML = `
+                <div class="link-info">
+                  <div class="link-label">${isReward ? '⭐ Official Reward' : '📄 Source'}</div>
+                  <div class="link-url">${item.url}</div>
+                </div>
+                <a class="btn-claim ${isReward ? '' : 'secondary'}" href="${item.url}" target="_blank" rel="noopener">
+                  ${isReward ? 'Claim →' : 'Open →'}
+                </a>
+              `;
+              grid.appendChild(card);
+            });
+          }
+
+          section.appendChild(grid);
+          content.appendChild(section);
+        }
+
+        document.getElementById('loading').style.display = 'none';
+        document.getElementById('content').style.display = 'block';
+      } catch (e) {
+        document.getElementById('loading').innerHTML = '❌ Failed to load links. Please refresh.';
+        console.error(e);
+      }
+    }
+
+    loadLinks();
+  </script>
+</body>
+</html>

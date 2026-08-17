@@ -1,21 +1,21 @@
 {
-  "updated": "August 16, 2026",
+  "updated": "August 17, 2026",
   "days": {
-    "August 16, 2026": [
-      {
-        "reward": "Coin Master Free Spins",
-        "url": "https://rewards.coinmaster.com/rewards/playonmobile.png?af_force_deeplink=true&af_xp=social&af_adset=CHATB&deep_link_value=coinmaster%3A%2F%2F&pid=Reward%20link&af_dp=coinmaster%3A%2F%2Fpromotions&c=pe_CHATBvKlfUP_20260809&deep_link_sub1=promotions&af_ad=levvvel.com"
-      },
-      {
-        "reward": "Coin Master Free Spins",
-        "url": "https://rewards.coinmaster.com/rewards/playonmobile.png?pid=Reward%20link&af_xp=social&deep_link_value=coinmaster%3A%2F%2F&af_adset=INS&af_force_deeplink=true&af_dp=coinmaster%3A%2F%2Fpromotions&c=pe_INSzvQBXL_20260809&deep_link_sub1=promotions&af_ad=levvvel.com"
-      },
+    "August 17, 2026": [
       {
         "reward": "Coin Master Free Spins",
         "url": "https://rewards.coinmaster.com/rewards/playonmobile.png?af_ad=levvvel.com&deep_link_value=coinmaster%3A%2F%2F&af_dp=coinmaster%3A%2F%2Fpromotions&af_xp=social&c=pe_EMAILogqRyl_20260808&af_adset=EMAIL&af_force_deeplink=true&deep_link_sub1=promotions&pid=Reward%20link"
+      },
+      {
+        "reward": "Coin Master Free Spins",
+        "url": "https://rewards.coinmaster.com/rewards/playonmobile.png?af_adset=no_source&pid=Reward%20link&deep_link_sub1=promotions&af_xp=social&af_dp=coinmaster%3A%2F%2Fpromotions&af_ad=levvvel.com&deep_link_value=coinmaster%3A%2F%2F&c=pe_HELPNiEhJa_20260809&af_force_deeplink=true"
+      },
+      {
+        "reward": "Coin Master Free Spins",
+        "url": "https://rewards.coinmaster.com/rewards/playonmobile.png?af_ad=levvvel.com&af_dp=coinmaster%3A%2F%2Fpromotions&deep_link_sub1=promotions&c=pe_THREGUupxv_20260809&pid=Reward%20link&af_adset=no_source&af_xp=social&af_force_deeplink=true&deep_link_value=coinmaster%3A%2F%2F"
       }
     ],
-    "August 15, 2026": [],
-    "August 14, 2026": []
+    "August 16, 2026": [],
+    "August 15, 2026": []
   }
 }

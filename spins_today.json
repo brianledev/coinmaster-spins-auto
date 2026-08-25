@@ -1,21 +1,21 @@
 {
-  "updated": "August 24, 2026",
+  "updated": "August 25, 2026",
   "days": {
-    "August 24, 2026": [
+    "August 25, 2026": [
+      {
+        "reward": "Coin Master Free Spins",
+        "url": "https://rewards.coinmaster.com/rewards/playonmobile.png?af_force_deeplink=true&deep_link_value=coinmaster%3A%2F%2F&af_xp=social&af_dp=coinmaster%3A%2F%2Fpromotions&deep_link_sub1=promotions&c=pe_FCBuvtodD_20260809&pid=Reward%20link&af_adset=FCB&af_ad=levvvel.com"
+      },
+      {
+        "reward": "Coin Master Free Spins",
+        "url": "https://rewards.coinmaster.com/rewards/playonmobile.png?deep_link_sub1=promotions&af_force_deeplink=true&c=pe_HELPfnOznE_20260822&deep_link_value=coinmaster%3A%2F%2F&af_ad=coinmaster.com&af_xp=social&af_dp=coinmaster%3A%2F%2Fpromotions&af_adset=no_source&pid=Reward%20link&clickToken=553084b6-037c-4f60-8d12-391e7d41704a"
+      },
       {
         "reward": "Coin Master Free Spins",
         "url": "https://rewards.coinmaster.com/rewards/playonmobile.png?af_adset=no_source&pid=Reward%20link&deep_link_sub1=promotions&af_xp=social&af_dp=coinmaster%3A%2F%2Fpromotions&af_ad=levvvel.com&deep_link_value=coinmaster%3A%2F%2F&c=pe_HELPNiEhJa_20260809&af_force_deeplink=true"
-      },
-      {
-        "reward": "Coin Master Free Spins",
-        "url": "https://rewards.coinmaster.com/rewards/playonmobile.png?c=pe_INSdXuRGM_20260822&clickToken=962bbec2-8c3b-4541-a9af-05bb46433ee2&deep_link_value=coinmaster%3A%2F%2F&af_xp=social&af_ad=coinmaster.com&af_dp=coinmaster%3A%2F%2Fpromotions&af_force_deeplink=true&pid=Reward%20link&deep_link_sub1=promotions&af_adset=INS"
-      },
-      {
-        "reward": "Coin Master Free Spins",
-        "url": "https://rewards.coinmaster.com/rewards/playonmobile.png?pid=Reward%20link&af_xp=social&deep_link_value=coinmaster%3A%2F%2F&af_adset=INS&af_force_deeplink=true&af_dp=coinmaster%3A%2F%2Fpromotions&c=pe_INSzvQBXL_20260809&deep_link_sub1=promotions&af_ad=levvvel.com"
       }
     ],
-    "August 23, 2026": [],
-    "August 22, 2026": []
+    "August 24, 2026": [],
+    "August 23, 2026": []
   }
 }

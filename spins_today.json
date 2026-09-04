@@ -1,21 +1,21 @@
 {
-  "updated": "September 03, 2026",
+  "updated": "September 04, 2026",
   "days": {
-    "September 03, 2026": [
-      {
-        "reward": "Coin Master Free Spins",
-        "url": "https://rewards.coinmaster.com/rewards/playonmobile.png?c=pe_INSdXuRGM_20260822&clickToken=962bbec2-8c3b-4541-a9af-05bb46433ee2&deep_link_value=coinmaster%3A%2F%2F&af_xp=social&af_ad=coinmaster.com&af_dp=coinmaster%3A%2F%2Fpromotions&af_force_deeplink=true&pid=Reward%20link&deep_link_sub1=promotions&af_adset=INS"
-      },
+    "September 04, 2026": [
       {
         "reward": "Coin Master Free Spins",
         "url": "https://rewards.coinmaster.com/rewards/playonmobile.png?af_xp=social&deep_link_sub1=promotions&clickToken=8659d2dc-0305-4a74-b176-883664463a29&c=pe_CHATBKWuMWA_20260822&af_force_deeplink=true&af_dp=coinmaster%3A%2F%2Fpromotions&af_adset=CHATB&af_ad=coinmaster.com&deep_link_value=coinmaster%3A%2F%2F&pid=Reward%20link"
       },
       {
         "reward": "Coin Master Free Spins",
-        "url": "https://rewards.coinmaster.com/rewards/playonmobile.png?af_adset=FCB&pid=Reward%20link&af_ad=coinmaster.com&deep_link_sub1=promotions&af_force_deeplink=true&c=pe_FCBQYQyNn_20260822&af_xp=social&clickToken=1d1450e0-57d3-4811-bf9b-d3e395898d41&af_dp=coinmaster%3A%2F%2Fpromotions&deep_link_value=coinmaster%3A%2F%2F"
+        "url": "https://rewards.coinmaster.com/rewards/playonmobile.png?deep_link_sub1=promotions&af_force_deeplink=true&c=pe_HELPfnOznE_20260822&deep_link_value=coinmaster%3A%2F%2F&af_ad=coinmaster.com&af_xp=social&af_dp=coinmaster%3A%2F%2Fpromotions&af_adset=no_source&pid=Reward%20link&clickToken=553084b6-037c-4f60-8d12-391e7d41704a"
+      },
+      {
+        "reward": "Coin Master Free Spins",
+        "url": "https://rewards.coinmaster.com/rewards/playonmobile.png?c=pe_INSdXuRGM_20260822&clickToken=962bbec2-8c3b-4541-a9af-05bb46433ee2&deep_link_value=coinmaster%3A%2F%2F&af_xp=social&af_ad=coinmaster.com&af_dp=coinmaster%3A%2F%2Fpromotions&af_force_deeplink=true&pid=Reward%20link&deep_link_sub1=promotions&af_adset=INS"
       }
     ],
-    "September 02, 2026": [],
-    "September 01, 2026": []
+    "September 03, 2026": [],
+    "September 02, 2026": []
   }
 }

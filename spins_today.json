@@ -1,21 +1,21 @@
 {
-  "updated": "November 06, 2026",
+  "updated": "November 07, 2026",
   "days": {
-    "November 06, 2026": [
-      {
-        "reward": "Coin Master Free Spins",
-        "url": "https://rewards.coinmaster.com/rewards/playonmobile.png?pid=Reward%20link&deep_link_value=coinmaster%3A%2F%2F&af_dp=coinmaster%3A%2F%2Fpromotions&af_adset=EMAIL&c=pe_EMAILaQHfiB_20261029&af_ad=static.moonactive.net&deep_link_sub1=promotions&af_force_deeplink=true&af_xp=social"
-      },
+    "November 07, 2026": [
       {
         "reward": "Coin Master Free Spins",
         "url": "https://rewards.coinmaster.com/rewards/playonmobile.png?deep_link_value=coinmaster%3A%2F%2F&af_force_deeplink=true&af_adset=no_source&deep_link_sub1=promotions&pid=Reward%20link&c=pe_HELPWOjEMh_20261031&af_ad=static.moonactive.net&af_xp=social&af_dp=coinmaster%3A%2F%2Fpromotions"
       },
       {
         "reward": "Coin Master Free Spins",
-        "url": "https://rewards.coinmaster.com/rewards/playonmobile.png?deep_link_sub1=promotions&af_ad=static.moonactive.net&pid=Reward%20link&af_dp=coinmaster%3A%2F%2Fpromotions&af_xp=social&c=pe_EMAILaQHfiB_20261029&af_force_deeplink=true&deep_link_value=coinmaster%3A%2F%2F&af_adset=EMAIL"
+        "url": "https://rewards.coinmaster.com/rewards/playonmobile.png?af_xp=social&deep_link_value=coinmaster%3A%2F%2F&af_adset=FCB&c=pe_FCBEfFlPc_20261031&af_dp=coinmaster%3A%2F%2Fpromotions&af_ad=static.moonactive.net&af_force_deeplink=true&pid=Reward%20link&deep_link_sub1=promotions"
+      },
+      {
+        "reward": "Coin Master Free Spins",
+        "url": "https://rewards.coinmaster.com/rewards/playonmobile.png?pid=Reward%20link&deep_link_value=coinmaster%3A%2F%2F&af_dp=coinmaster%3A%2F%2Fpromotions&af_adset=EMAIL&c=pe_EMAILaQHfiB_20261029&af_ad=static.moonactive.net&deep_link_sub1=promotions&af_force_deeplink=true&af_xp=social"
       }
     ],
-    "November 05, 2026": [],
-    "November 04, 2026": []
+    "November 06, 2026": [],
+    "November 05, 2026": []
   }
 }
